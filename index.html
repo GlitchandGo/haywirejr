@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HAYWIRE Jr.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+
+    <!-- Difficulty Selection Screen -->
+    <div id="difficulty-screen" class="screen">
+      <h1>Please Select Your Difficulty</h1>
+      <div class="difficulty-buttons">
+        <button id="btn-easy" data-difficulty="easy">Easy</button>
+        <button id="btn-hard" data-difficulty="hard">Hard</button>
+        <button id="btn-master" data-difficulty="master">
+          Master <span class="lock-icon">🔒</span>
+        </button>
+      </div>
+      <footer>
+        <small>©2025 Glitch&Go Inc. All rights reserved</small>
+      </footer>
+    </div>
+
+    <!-- Tutorial / Company Screen -->
+    <div id="tutorial-screen" class="screen" style="display:none;">
+      <h2>Welcome, CEO!</h2>
+      <p>Please enter the name of your company:</p>
+      <input type="text" id="company-name-input" placeholder="Your Company Name">
+      <button id="continue-btn">Continue</button>
+      <div id="instructions" style="display:none;">
+        <p>Here's how this all works:</p>
+        <ul>
+          <li>Manage 3 systems: Core, Vault, and Database.</li>
+          <li>Each system is protected by 2 gates:
+            <ul>
+              <li>Core: Gates A &amp; B</li>
+              <li>Vault: Gates C &amp; D</li>
+              <li>Database: Gates E &amp; F</li>
+            </ul>
+          </li>
+          <li>If your Core falls, you lose—bring down all enemy systems to win.</li>
+          <li><strong>Terminal Commands</strong> (all cost 30 Crypto):
+            <br><code>attack [company name] [gate/system]</code>
+            <br><code>defend [gate/system]</code>
+            <br><code>utilize [gate/system]</code>
+          </li>
+          <li>Difficulty affects the pace and your attack success chance:
+            <ul>
+              <li>Easy: Enemy attacks every 12–15 sec; YOUR attacks succeed 80% of the time.</li>
+              <li>Hard: Enemy attacks every 8–10 sec; YOUR attacks succeed 60%.</li>
+              <li>Master: Enemy attacks every 4–6 sec; YOUR attacks succeed 40%.</li>
+            </ul>
+          </li>
+        </ul>
+        <button id="begin-game-btn">Begin Game</button>
+      </div>
+    </div>
+
+    <!-- Main Game Screen -->
+    <div id="main-game-screen" class="screen" style="display:none;">
+      <!-- Navigation Bar -->
+      <div id="nav-bar">
+        <button id="btn-terminal">Terminal</button>
+        <button id="btn-stats">Stats</button>
+        <button id="btn-commands">Commands</button>
+        <button id="btn-reset">Reset</button>
+      </div>
+      <!-- View Container -->
+      <div id="view-container">
+        <!-- Terminal View -->
+        <div id="view-terminal" class="view">
+          <div id="terminal-panel">
+            <div id="command-display">
+              <h2>Terminal</h2>
+              <div id="terminal-output"></div>
+            </div>
+            <input type="text" id="command-input" placeholder="Enter command here">
+            <button id="send-command-btn">Send</button>
+          </div>
+        </div>
+        <!-- Stats View -->
+        <div id="view-stats" class="view" style="display:none;">
+          <div id="stats-panel">
+            <div id="player-stats" class="company-stats">
+              <h3 id="player-company-name"></h3>
+              <p>Crypto: <span id="player-crypto"></span></p>
+              <div class="system" id="player-core">
+                <h4>Core</h4>
+                <p>Gate A: <span class="health"></span></p>
+                <p>Gate B: <span class="health"></span></p>
+                <p>Core Health: <span class="sys-health"></span></p>
+              </div>
+              <div class="system" id="player-vault">
+                <h4>Vault</h4>
+                <p>Gate C: <span class="health"></span></p>
+                <p>Gate D: <span class="health"></span></p>
+                <p>Vault Health: <span class="sys-health"></span></p>
+              </div>
+              <div class="system" id="player-database">
+                <h4>Database</h4>
+                <p>Gate E: <span class="health"></span></p>
+                <p>Gate F: <span class="health"></span></p>
+                <p>Database Health: <span class="sys-health"></span></p>
+              </div>
+            </div>
+            <div id="enemy-stats">
+              <h3>Opponents</h3>
+              <!-- Enemy stats will be injected here -->
+            </div>
+          </div>
+        </div>
+        <!-- Commands View -->
+        <div id="view-commands" class="view" style="display:none;">
+          <div id="commands-panel" class="company-stats">
+            <h3>List of Commands</h3>
+            <ul>
+              <li><code>attack [company name] [gate/system]</code></li>
+              <li><code>defend [gate/system]</code></li>
+              <li><code>utilize [gate/system]</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Banner for In-Game Feedback -->
+      <div id="banner"></div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript files -->
+  <script src="js/difficulty.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/commands.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
